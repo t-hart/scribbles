@@ -9,13 +9,13 @@ Aside from a little bit of Ubuntu for educational purposes, I had no prior exper
 ** Other requirements
    I wanted to keep a Windows partition in case I would end up needing it, and I wanted a shared drive where I could put data that was independent of the OS.
 
-** Display and ~nomodeset~
+** Display and =nomodeset=
    The first issue I ran into, and which delayed me by a couple of months after it first reared its head was the fact that trying to boot into the graphical installer on the USB only gave me a non-blinking caret in the top left of the screen.
 
 *** Solution
-    Turns out this was caused initially by pressing ~F2~ at startup and just assuming that re-organizing the boot order would take care of it. When I instead used ~F12~ and manually selected the NixOS USB to boot from it magically worked.
+    Turns out this was caused initially by pressing =F2= at startup and just assuming that re-organizing the boot order would take care of it. When I instead used =F12= and manually selected the NixOS USB to boot from it magically worked.
 
-    I'm not entirely sure why, but I imagine it is because it automatically adds ~nomodeset~ as a kernel parameter when doing it this way (please tell me if this is not correct!). The reason I think this might be the case is that even after going through with the installation, NixOS would boot into the blank screen with a caret unless I added the ~nomodeset~ to ~boot.kernelParams~.
+    I'm not entirely sure why, but I imagine it is because it automatically adds =nomodeset= as a kernel parameter when doing it this way (please tell me if this is not correct!). The reason I think this might be the case is that even after going through with the installation, NixOS would boot into the blank screen with a caret unless I added the =nomodeset= to =boot.kernelParams=.
 
     Note that I later removed this due to issues with external monitors.
 
@@ -26,4 +26,4 @@ Aside from a little bit of Ubuntu for educational purposes, I had no prior exper
 *** Audio through HDMI/DisplayPort
 ** External monitors
 *** The death of Alacritty
-*** Removing ~nomodeset~
+*** Removing =nomodeset=
