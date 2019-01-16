@@ -1,0 +1,29 @@
+* The Chronicles of Thomas +Covenant+ and NixOS
+  In the fall of 2018, my trusty Macbook went off this world's mortal coil after six years of faithful service. I decided it was time to indulge my curiosity and move over to Linux.
+
+Aside from a little bit of Ubuntu for educational purposes, I had no prior experience with Linux. I didn't have any particular affinity for any particular distro, but I had recently heard of NixOS and was very intrigued by the whole 'functional OS' bit (having recently fallen in love with functional programming). Thus I decided to give it a go. How hard can it be, right? Famous last words.
+
+** Hardware
+   I picked up a 15" Dell XPS 9570 with 32GB RAM and a six-core i9 CPU (can you tell I don't know my hardware?). Worth noting: this computer comes with an onboard Intel GPU and a discrete NVidia GeForce GTX 1050 Ti Mobile. This would end up causing me quite a bit of trouble.
+
+** Other requirements
+   I wanted to keep a Windows partition in case I would end up needing it, and I wanted a shared drive where I could put data that was independent of the OS.
+
+** Display and ~nomodeset~
+   The first issue I ran into, and which delayed me by a couple of months after it first reared its head was the fact that trying to boot into the graphical installer on the USB only gave me a non-blinking caret in the top left of the screen.
+
+*** Solution
+    Turns out this was caused initially by pressing ~F2~ at startup and just assuming that re-organizing the boot order would take care of it. When I instead used ~F12~ and manually selected the NixOS USB to boot from it magically worked.
+
+    I'm not entirely sure why, but I imagine it is because it automatically adds ~nomodeset~ as a kernel parameter when doing it this way (please tell me if this is not correct!). The reason I think this might be the case is that even after going through with the installation, NixOS would boot into the blank screen with a caret unless I added the ~nomodeset~ to ~boot.kernelParams~.
+
+    Note that I later removed this due to issues with external monitors.
+
+** Shared drive
+*** Mounting post-boot
+** Audio
+*** Selecting outputs
+*** Audio through HDMI/DisplayPort
+** External monitors
+*** The death of Alacritty
+*** Removing ~nomodeset~
