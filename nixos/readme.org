@@ -28,13 +28,13 @@
 ** Other requirements
    I wanted to keep a Windows partition in case I would end up needing it, and I wanted a shared drive where I could put data that was independent of the OS.
 
-** Display and =nomodeset=
+** Display and ~nomodeset~
    The first issue I ran into, and which delayed me by a couple of months after it first reared its head was the fact that trying to boot into the graphical installer on the USB only gave me a non-blinking caret in the top left of the screen.
 
 *** Solution
-    Turns out this was caused initially by pressing =F2= at startup and just assuming that re-organizing the boot order would take care of it. When I instead used =F12= and manually selected the NixOS USB to boot from it magically worked.
+    Turns out this was caused initially by pressing ~F2~ at startup and just assuming that re-organizing the boot order would take care of it. When I instead used ~F12~ and manually selected the NixOS USB to boot from it magically worked.
 
-    I'm not entirely sure why, but I imagine it is because it automatically adds =nomodeset= as a kernel parameter when doing it this way (please tell me if this is not correct!). The reason I think this might be the case is that even after going through with the installation, NixOS would boot into the blank screen with a caret unless I added the =nomodeset= to =boot.kernelParams=.
+    I'm not entirely sure why, but I imagine it is because it automatically adds ~nomodeset~ as a kernel parameter when doing it this way (please tell me if this is not correct!). The reason I think this might be the case is that even after going through with the installation, NixOS would boot into the blank screen with a caret unless I added the ~nomodeset~ to ~boot.kernelParams~.
 
     Note that I later removed this due to issues with external monitors.
 
@@ -52,7 +52,7 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
     #+end_src
 
 *** Alternative solution
-    On doing some more research while writing this, I came across [[https://nixos.wiki/wiki/NTFS][this article]] on the NixOS wiki on NTFS. It suggests setting =boot.supportedFileSystems \= [ "ntfs" ];=. Whether this solves saving the mount point or not, I have yet to find out.
+    On doing some more research while writing this, I came across [[https://nixos.wiki/wiki/NTFS][this article]] on the NixOS wiki on NTFS. It suggests setting ~boot.supportedFileSystems = [ "ntfs" ];~. Whether this solves saving the mount point or not, I have yet to find out.
     # TODO: update this after testing
 
 ** Audio
@@ -64,7 +64,7 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
    This has been the biggest pain point so far. I spent a solid two-three weeks trying to get any external monitors up and running with no luck at all.
    # [[https://discourse.nixos.org/t/external-monitors-not-working-dell-xps/1799a][discourse thread]]
 *** The death of Alacritty
-*** Removing =nomodeset=
+*** Removing ~nomodeset~
 ** Other resources
    In addition to the [[https://nixos.org/nixos/manual][NixOS manual]], I thoroughly recommend checking out the [[https://wiki.archlinux.org/][Arch wiki]] ([[https://wiki.archlinux.org/index.php/Dell_XPS_15_9570][here's]] the article for this particular laptop), even if you might need to figure out how to apply the correct settings in NixOS.
 
