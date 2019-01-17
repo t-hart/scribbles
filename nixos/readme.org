@@ -1,7 +1,26 @@
 * The Chronicles of Thomas +Covenant+ and NixOS
-  In the fall of 2018, my trusty Macbook went off this world's mortal coil after six years of faithful service. I decided it was time to indulge my curiosity and move over to Linux.
 
-Aside from a little bit of Ubuntu for educational purposes, I had no prior experience with Linux. I didn't have any particular affinity for any particular distro, but I had recently heard of NixOS and was very intrigued by the whole 'functional OS' bit (having recently fallen in love with functional programming). Thus I decided to give it a go. How hard can it be, right? Famous last words.
+** Preamble
+
+    What follows is a patched-together set of notes about how I got my NixOS system from a blank screen to a functional OS.
+
+    *Disclaimer*: I am /not/ an expert (or even very experienced) and thus, the text below might contain a lot of inaccuracies. If you happen to find any, I'd appreciate it if you let me know.
+
+     This is not intended to be a comprehensive guide about how to set up NixOS. It does, however, contain some pieces of information that I was unable to find when working through some issues myself, so it might be of knowledge to some. If at least one person can find a solution to their issue in the text below, I would consider it a success.
+
+*** TL;DR:
+     While there is still more to do, my impression so far is wildly positive. The OS-as-configuration approach, ability to perform rollbacks, and transparent builds of the OS feels like a real game changer.
+
+     Overall: I am very happy. I'd recommend anyone who's interested to give it a proper look, but expect to spend some time setting it up--especially if it's your first Linux experience.
+
+
+** Famous last words
+
+   In the fall of 2018, my trusty Macbook left this world's mortal coil after six years of faithful service. I decided it was time to indulge my curiosity and move over to Linux.
+
+ Aside from a little bit of Ubuntu for educational purposes, I had no prior experience with Linux. I didn't have any particular affinity for any particular distro, but I had recently heard of NixOS and was very intrigued by the whole 'functional OS' bit (having recently fallen in love with functional programming). Thus I decided to give it a go.
+
+/How hard can it be, right?/
 
 ** Hardware
    I picked up a 15" Dell XPS 9570 with 32GB RAM and a six-core i9 CPU (can you tell I don't know my hardware?). Worth noting: this computer comes with an onboard Intel GPU and a discrete NVidia GeForce GTX 1050 Ti Mobile. This would end up causing me quite a bit of trouble.
@@ -19,11 +38,34 @@ Aside from a little bit of Ubuntu for educational purposes, I had no prior exper
 
     Note that I later removed this due to issues with external monitors.
 
-** Shared drive
+** Shared drive // NTFS
+   To share a drive between Linux and Windows I decided (after some very shallow research indicating that Linux could both read and write to them) to go with using an NTFS drive.
+
+What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mount it as writable. Furthermore, you are unable to mount it permanently due to it being unsupported on some level.
+
 *** Mounting post-boot
+    The way I got around this was through this bit of config:
+    #+begin_src
+      boot.postBootCommands = ''
+        mount -t ntfs-3g <drive to mount, e.g. /dev/nvme0n1p11> <mount point>
+        '';
+    #+end_src
+
+*** Alternative solution
+    On doing some more research while writing this, I came across [[https://nixos.wiki/wiki/NTFS][this article]] on the NixOS wiki on NTFS. It suggests setting =boot.supportedFileSystems \= [ "ntfs" ];=. Whether this solves saving the mount point or not, I have yet to find out.
+    # TODO: update this after testing
+
 ** Audio
-*** Selecting outputs
-*** Audio through HDMI/DisplayPort
+   I have run into a couple of issues with audio, some of which I have not been able to find the solution to.
+
+   Selecting outputs mostly works, but I seem to be unable to select HDMI/DisplayPort for audio output, which means that I need to route the audio elsewhere (such as through my dock's output) instead. Not a show-stopper, but I'd love to get this sorted.
+
 ** External monitors
+   This has been the biggest pain point so far. I spent a solid two-three weeks trying to get any external monitors up and running with no luck at all.
+   # [[https://discourse.nixos.org/t/external-monitors-not-working-dell-xps/1799a][discourse thread]]
 *** The death of Alacritty
 *** Removing =nomodeset=
+** Other resources
+   In addition to the [[https://nixos.org/nixos/manual][NixOS manual]], I thoroughly recommend checking out the [[https://wiki.archlinux.org/][Arch wiki]] ([[https://wiki.archlinux.org/index.php/Dell_XPS_15_9570][here's]] the article for this particular laptop), even if you might need to figure out how to apply the correct settings in NixOS.
+
+Furthermore, [[https://grahamc.com/blog/nixos-on-dell-9560][NixOS on a Dell 9560]] by Graham Christensen and [[https://chris-martin.org/2015/installing-nixos][Installing NixOS]] were very useful.
