@@ -84,10 +84,21 @@ This seems to indicate that there is something going on with the audio driver an
    # slack and Alacritty terrible performance on plasma, smooth on xfce.
 
 ** External monitors
-   This has been the biggest pain point so far. I spent a solid two-three weeks trying to get any external monitors up and running with no luck at all.
-   # [[https://discourse.nixos.org/t/external-monitors-not-working-dell-xps/1799a][discourse thread]]
-*** The death of Alacritty
+    This has been the biggest pain point so far. I spent a solid two-three weeks trying to get any external monitors up and running with no luck at all. After a lot of digging around, I managed to find something that works ... sometimes. It's still not perfect, but it's getting closer.
+
+    In trying to make this work, I [[https://discourse.nixos.org/t/external-monitors-not-working-dell-xps][posted a question]] on the NixOS Discourse channel in which there is some information if you are struggling with the same issue.
+
 *** Removing ~nomodeset~
+    In short, removing ~nomodeset~ from the ~kernelParams~ seems to have been the magic bullet. After this, setting video drivers in the ~xserver~ section of the config no longer crashed the display manager, and I finally made some significant strides in the right direction.
+*** The death of Alacritty
+    However, removing ~nomodeset~ did seem to have some unfortunate results for Alacritty, which I've been using steadily for a while. At first it started acting up, not letting me input text etc, and then, as my setup progressed, it eventually started crashing on startup.
+
+    Running it through ~valgrind~ reveals that it crashes when calling some C code.
+
+    For the time being, I'm using the default xfce terminal.
+*** Performance issues
+    Even now that I've got support for all my monitors, there's still stuff to be done. Sometimes I run into massive performance issues when trying to run all of them, but it seems to differ based on the order I set them up in, and usually doesn't hit until I use all three. I'll need to troubleshoot this further, but for the time being, I'm happy to base my work around my main monitor, which is large enough to accommodate most tasks and causes the least amount of performance problems.
+
 ** Other resources
    In addition to the [[https://nixos.org/nixos/manual][NixOS manual]], I thoroughly recommend checking out the [[https://wiki.archlinux.org/][Arch wiki]] ([[https://wiki.archlinux.org/index.php/Dell_XPS_15_9570][here's]] the article for this particular laptop), even if you might need to figure out how to apply the correct settings in NixOS.
 
