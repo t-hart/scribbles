@@ -79,6 +79,10 @@ Furthermore, often when booting or waking from sleep, the audio is super choppy 
 
 This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
 
+** Desktop Environments and performance
+   # Plasma 5 vs xfce
+   # slack and Alacritty terrible performance on plasma, smooth on xfce.
+
 ** External monitors
    This has been the biggest pain point so far. I spent a solid two-three weeks trying to get any external monitors up and running with no luck at all.
    # [[https://discourse.nixos.org/t/external-monitors-not-working-dell-xps/1799a][discourse thread]]
