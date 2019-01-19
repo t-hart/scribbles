@@ -52,8 +52,9 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
     #+end_src
 
 *** Alternative solution
-    On doing some more research while writing this, I came across [[https://nixos.wiki/wiki/NTFS][this article]] on the NixOS wiki on NTFS. It suggests setting ~boot.supportedFileSystems = [ "ntfs" ];~. Whether this solves saving the mount point or not, I have yet to find out.
-    # TODO: update this after testing
+    On doing some more research while writing this, I came across [[https://nixos.wiki/wiki/NTFS][this article]] on the NixOS wiki on NTFS. It suggests setting ~boot.supportedFileSystems = [ "ntfs" ];~. +Whether this solves saving the mount point or not, I have yet to find out.+
+
+    /This does not work./ There is no config option that is ~boot.supportedFileSystems~. There /is/, however, a ~boot.initrd.supportedFileSystems~. Whether this does the same thing or not, I don't know. At the moment, this is not my focus.
 
 ** Audio
    I have run into a couple of issues with audio, some of which I have not been able to find the solution to.
