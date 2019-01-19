@@ -4,9 +4,9 @@
 
     What follows is a patched-together set of notes about how I got my NixOS system from a blank screen to a functional OS.
 
-    *Disclaimer*: I am /not/ an expert (or even very experienced) and thus, the text below might contain a lot of inaccuracies. If you happen to find any, I'd appreciate it if you let me know.
+    *Disclaimer*: I am /not/ an expert (or even remotely experienced) and thus, the text below might contain a lot of inaccuracies. If you happen to find any, I'd appreciate it if you let me know.
 
-     This is not intended to be a comprehensive guide about how to set up NixOS. It does, however, contain some pieces of information that I was unable to find when working through some issues myself, so it might be of knowledge to some. If at least one person can find a solution to their issue in the text below, I would consider it a success.
+     This is not intended to be a comprehensive guide about how to set up NixOS. It does, however, contain some pieces of information that I was unable to find when working through some issues myself, so it might be of use to some. If at least one person can find a solution to their issue in the text below, I would consider it a success.
 
 *** TL;DR:
      While there is still more to do, my impression so far is wildly positive. The OS-as-configuration approach, ability to perform rollbacks, and transparent builds of the OS feels like a real game changer.
