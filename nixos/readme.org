@@ -61,23 +61,23 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
 
    Selecting outputs mostly works, but I seem to be unable to select HDMI/DisplayPort for audio output, which means that I need to route the audio elsewhere (such as through my dock's output) instead. Not a show-stopper, but I'd love to get this sorted.
 
-** CalDigit TS3+ dock and Digital Optical Audio
-   I have a Caldigit TS3+ dock to which I have connected all peripherals. This dock has a digital optical audio output.
+*** CalDigit TS3+ dock and Digital Optical Audio
+    I have a Caldigit TS3+ dock to which I have connected all peripherals. This dock has a digital optical audio output.
 
-After realizing I wasn't having any luck with getting the audio through DP setup to work on Linux and after seeing the DA out listed in audio sinks (is that what we call the outputs in the Linux world?), I decided I'd give it a run for its money.
+ After realizing I wasn't having any luck with getting the audio through DP setup to work on Linux and after seeing the DA out listed in audio sinks (is that what we call the outputs in the Linux world?), I decided I'd give it a run for its money.
 
-I bought a Digital Audio Converter (DAC) and hooked it up to my Mackie Big Knob. On the plus side, this allows me to separate the computer audio from other audio sources (notably, my Nintendo Switch).
+ I bought a Digital Audio Converter (DAC) and hooked it up to my Mackie Big Knob. On the plus side, this allows me to separate the computer audio from other audio sources (notably, my Nintendo Switch).
 
-However, there is an issue: the audio cuts of intermittently. Only for about half a second or so, and then resumes. I first noticed with Spotify, where, on a good run, it'd happen about once every 20 minutes or so, while on a bad run, it'd be about every second (though not in a steady beat). I tried consulting the Arch wiki [[https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#Glitches.2C_skips_or_crackling][article]] about the PulseAudio driver and glitches based on an AskUbuntu issue that cited this as a solution, but it seems to have no effect.
+ However, there is an issue: the audio cuts of intermittently. Only for about half a second or so, and then resumes. I first noticed with Spotify, where, on a good run, it'd happen about once every 20 minutes or so, while on a bad run, it'd be about every second (though not in a steady beat). I tried consulting the Arch wiki [[https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#Glitches.2C_skips_or_crackling][article]] about the PulseAudio driver and glitches based on an AskUbuntu issue that cited this as a solution, but it seems to have no effect.
 
-Now, what might point me in the direction of the underlying cause is the following curiosity:
-I was browsing Netflix, watching some trailers (through mouseover), and while it worked just fine with Spotify playing in the background, if I paused Spotify, the trailer audio would get super choppy (about once a second). Unpausing Spotify would fix the issue, even if I lowered its volume to zero.
+ Now, what might point me in the direction of the underlying cause is the following curiosity:
+ I was browsing Netflix, watching some trailers (through mouseover), and while it worked just fine with Spotify playing in the background, if I paused Spotify, the trailer audio would get super choppy (about once a second). Unpausing Spotify would fix the issue, even if I lowered its volume to zero.
 
-However, using Netflix's video player to watch a trailer, the audio was perfectly smooth. Given that this was only a short 2 minute watch, I don't know how it would behave over a longer period, though, like YouTube and Spotify, it's likely it'd give out once every so often.
+ However, using Netflix's video player to watch a trailer, the audio was perfectly smooth. Given that this was only a short 2 minute watch, I don't know how it would behave over a longer period, though, like YouTube and Spotify, it's likely it'd give out once every so often.
 
-Furthermore, often when booting or waking from sleep, the audio is super choppy until I restart the PulseAudio service. This tends to decrease the frequency down to the aforementioned 20 minutes or so.
+ Furthermore, often when booting or waking from sleep, the audio is super choppy until I restart the PulseAudio service. This tends to decrease the frequency down to the aforementioned 20 minutes or so.
 
-This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
+ This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
 
 ** Desktop Environments and performance
    # Plasma 5 vs xfce
