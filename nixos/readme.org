@@ -13,7 +13,6 @@
 
      Overall: I am very happy. I'd recommend anyone who's interested to give it a proper look, but expect to spend some time setting it up--especially if it's your first Linux experience.
 
-
 ** Famous last words
 
    In the fall of 2018, my trusty Macbook left this world's mortal coil after six years of faithful service. I decided it was time to indulge my curiosity and move over to Linux.
@@ -61,8 +60,8 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
 
    Selecting outputs mostly works, but I seem to be unable to select HDMI/DisplayPort for audio output, which means that I need to route the audio elsewhere (such as through my dock's output) instead. Not a show-stopper, but I'd love to get this sorted.
 
-*** CalDigit TS3+ dock and Digital Optical Audio
-    I have a Caldigit TS3+ dock to which I have connected all peripherals. This dock has a digital optical audio output.
+*** Problem: CalDigit TS3+ dock and Digital Optical Audio
+    I have a CalDigit TS3+ dock to which I have connected all peripherals. This dock has a digital optical audio output.
 
  After realizing I wasn't having any luck with getting the audio through DP setup to work on Linux and after seeing the DA out listed in audio sinks (is that what we call the outputs in the Linux world?), I decided I'd give it a run for its money.
 
@@ -78,6 +77,21 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
  Furthermore, often when booting or waking from sleep, the audio is super choppy until I restart the PulseAudio service. This tends to decrease the frequency down to the aforementioned 20 minutes or so.
 
  This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
+
+*** Solution: opening `pavucontrol`
+ ---/This one weird trick will fix all your audio issues/
+
+Based on the issues I've been having, I seem to have found a solution, though I do not know /why/ it works.
+
+As mentioned, the autoplaying trailers on Netflix are the most prominent offenders and let me reproduce the issue consistently. I've spent a good few hours now scouring the web for help threads, trying all the various settings for changing buffer sample size, `pulseaudio` daemon configs, but to no avail.
+
+Purely by chance I discovered /this weird trick/, and I'm going to share it with you, dear reader. One word, one command: `pavucontrol`.
+
+Now, I've had this installed for a while, but what I found was that when I left the pavucontrol GUI open, /all/ my audio woes would just disappear. Spotify's been playing without hitch, and I can't even reproduce the issue with Netflix trailers anymore. /Update: I think this is mostly true, though I might have run into _one_ glitch so far./
+
+*** Explanation?
+    [[https://www.linuxquestions.org/questions/linux-newbie-8/have-to-keep-pavucontrol-open-in-order-for-sound-to-work-4175482780/][This LinuxQuestions thread]] seems to indicate that it is due to unloading inactive modules. This sounds reasonable, but I've not been able to make it work.
+
 
 ** Desktop Environments and performance
    # Plasma 5 vs xfce
