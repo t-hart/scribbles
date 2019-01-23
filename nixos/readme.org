@@ -78,16 +78,15 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
 
  This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
 
-*** Solution: opening `pavucontrol`
- ---/This one weird trick will fix all your audio issues/
+*** +Solution+: opening `pavucontrol` (Doesn't work)
 
 Based on the issues I've been having, I seem to have found a solution, though I do not know /why/ it works.
 
 As mentioned, the autoplaying trailers on Netflix are the most prominent offenders and let me reproduce the issue consistently. I've spent a good few hours now scouring the web for help threads, trying all the various settings for changing buffer sample size, `pulseaudio` daemon configs, but to no avail.
 
-Purely by chance I discovered /this weird trick/, and I'm going to share it with you, dear reader. One word, one command: `pavucontrol`.
+Occassionally leaving the ~pavucontrol~ GUI open seemed to fix it and I've even made it through a full two hours of Netflix watching without issues, but the next time I sit down and play some audio the issues return.
 
-Now, I've had this installed for a while, but what I found was that when I left the pavucontrol GUI open, /all/ my audio woes would just disappear. Spotify's been playing without hitch, and I can't even reproduce the issue with Netflix trailers anymore. /Update: I think this is mostly true, though I might have run into _one_ glitch so far./
+Once again, I'm at a loss.
 
 *** Explanation?
     [[https://www.linuxquestions.org/questions/linux-newbie-8/have-to-keep-pavucontrol-open-in-order-for-sound-to-work-4175482780/][This LinuxQuestions thread]] seems to indicate that it is due to unloading inactive modules. This sounds reasonable, but I've not been able to make it work.
