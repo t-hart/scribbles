@@ -40,7 +40,7 @@
 ** Shared drive // NTFS
    To share a drive between Linux and Windows I decided (after some very shallow research indicating that Linux could both read and write to them) to go with using an NTFS drive.
 
-What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mount it as writable. Furthermore, you are unable to mount it permanently due to it being unsupported on some level.
+What I didn't realize, was that you need ~ntfs-3g~ (~ntfs3g~ in ~nixpkgs~) to mount it as writable. Furthermore, you are unable to mount it permanently due to it being unsupported on some level.
 
 *** Mounting post-boot
     The way I got around this was through this bit of config:
@@ -78,11 +78,11 @@ What I didn't realize, was that you need `ntfs-3g` (`ntfs3g` in `nixpkgs`) to mo
 
  This seems to indicate that there is something going on with the audio driver and detection of whether there is sound playing, but I don't know enough to figure it out just yet. More research is needed.
 
-*** +Solution+: opening `pavucontrol` (Doesn't work)
+*** +Solution+: opening ~pavucontrol~ (Doesn't work)
 
 Based on the issues I've been having, I seem to have found a solution, though I do not know /why/ it works.
 
-As mentioned, the autoplaying trailers on Netflix are the most prominent offenders and let me reproduce the issue consistently. I've spent a good few hours now scouring the web for help threads, trying all the various settings for changing buffer sample size, `pulseaudio` daemon configs, but to no avail.
+As mentioned, the autoplaying trailers on Netflix are the most prominent offenders and let me reproduce the issue consistently. I've spent a good few hours now scouring the web for help threads, trying all the various settings for changing buffer sample size, ~pulseaudio~ daemon configs, but to no avail.
 
 Occassionally leaving the ~pavucontrol~ GUI open seemed to fix it and I've even made it through a full two hours of Netflix watching without issues, but the next time I sit down and play some audio the issues return.
 
