@@ -1,0 +1,49 @@
+* The Hitchhikers guide to Response Modeling
+** Description
+
+ /Give a concise description of the content and goals of your talk and what audience this presentation or workshop is for. Try not to exceed 300 words, as shorter and more to-the-point descriptions are more likely to be read by participants./
+
+What is the right way to model responses from a service when it doesn't necessarily have only one correct response? Imagine a database insert where it can either succeed or, if the id is already present, fail. Is the latter an exception? It's hardly unexpected behavior. Should it throw? What if the connection fails for some reason? Now that might be an actual exception (it's certainly an error).
+
+Sure, you could model different exceptions for each case, but this ends up being a lot of manual labor and feels like abusing the system. You can also do some trickery with classes, but it's far from idiomatic. It should be easier. What if you could encode all the different return values in a single type? What if you could return an enum, but with independent sets of data for each entry? Now you no longer need exceptions to model failing connections (because let's face it: in a distributed world, not being able to connect should not be unexpected).
+
+These types are known as Algebraic Data Types (ADTs) and are common in functional languages (Haskell, OCaml, and friends), but have started to break out of their niche (as can be seen in Rust, Swift, Kotlin, etc.). Harnessing their power is one of the best ways to model data that can be in different states and to leverage the type system of your language to write safer, cleaner, and more concise code.
+
+Join me to start exploring the potential of ADTs and how they can help you model data and make sure that states that should be impossible are indeed impossible.
+
+**  Expected audience
+
+ /Who should attend this session? How will the participants benefit from attending? What experience (if any) should the audience have to get the most value out of your talk?/
+
+ This talk is for people who want to improve their data modeling skills and explore new ways of doing so. The purpose of the talk is to give a quick introduction to and overview of Algebraic Data Types and how these can be used to better model data and create a more accurate representation of the data. The talk is appropriate for any experience level, but may be easier to grasp for those with some basic knowledge of functional or functional-like languages.
+
+**  Suggested keywords
+
+ /Suggest up to five keywords that describe your talk. Note that we only use these keywords as an orientation and often edit them to better fit into our published program./
+ 'functional programming', data modeling', 'algebraic data types', 'error handling', 'state management'
+
+** Outline (not public)
+
+ /The information will be used by the Program Committee to review the details of your talk. The outline should be a rough agenda for the talk, with a short description for each section, and with a rough estimate of the time spent on each. Omitting this section will reduce the chances of your submission being accepted./
+
+ - [00:00--02:30] Introduction :: The speaker introduces themselves, quickly mentions their background and what prompted them to give this talk. Goes over the agenda.
+ - [02:30--05:00] The problem we're solving :: Explaining what problems the topics explored within this talk can help us solve. In this particular case, it's inserting data into a database.
+ - [05:00--12:00] Exploring the meat of the problem :: Discussions on how this might be solved in Java or C#(including exceptions, inheritance, sealed classes), maybe JavaScript (strings. Strings everywhere!) . Introduces the concept of Algebraic Data Types and how they can be used. Uses Rust to show implementations, including the basic Result<T, E> type and more advanced custom types. This introduces the concept of Result types (secretly monads) being like a virus in that it 'infects' your code base and you can never really leave the context (similar to asynchronous functions).
+ - [12:00--12:20] Mandatory 'monads are burritos' joke. No-one laughs :(
+ - [12:20--17:00] Working with the data :: Wherein the speaker tries to answer the question 'but how do I get the value?'. Short answer: you don't. Demonstrates why you want to operate within the context of the data rather than taking the data out. Mentions railway-style programming and how that can vastly improve error handling in your applications.
+ - [17:00--20:00] Wrap-up: summary and hopes for the future :: The speaker hopes to see some of these concepts adopted into the mainstream
+
+** Information for the program commitee (not public)
+
+/Please include any information relevant to the program committee that you do not want to include in your public presentation profile. For example, you can give us your motivation for speaking at JavaZone, include links to videos and slides from previous speaker engagements or any other relevant information for choosing your talk./
+
+Just to get it out of the way: first time speaker. At least in the tech space.
+I love sharing knowledge with other people and have been preparing to enter the speaker space for a while. I think the time has finally come. A large reason for giving this talk is the bewilderment I have been met with when mentioning the concept of ADTs to other developers in the object oriented space. It feels like a concept that is difficult to grasp and really appreciate, but once you understand it, you never want to let go.
+
+Apart from this, I'm just a very enthusiastic developer, heavily into functional programming, but stuck in mostly OO languages in my day job. A regular at a range of programming meetups around Oslo. Also a former professional musician and current group fitness instructor, so I've spent my fair share of hours on stage and I know the feeling of seeing someone's eyes light up when they completely lock in with what is being presented for them.
+
+** Short description of the speaker (max 150 words)
+
+   /Tell the audience who the speaker is and why they are the perfect person to hold this talk/
+
+   Thomas Hartmann has experience from consultancies, the games industry, fintech, and the infrastructure space. He's weirdly passionate about type systems and utilizing them to their full potential. He might spout something about 'categories, objects, and morphisms', trying to sound intellectual, but he's actually a nice, caring guy on the inside. When he's not working, he's probably spending his time carefully planning out yet another side project he'll never start--much less finish--or wasting away in dreams of refactoring and premature optimizations.
