@@ -29,7 +29,7 @@ Join me to start exploring the potential of ADTs and how they can help you model
  - [00:00--02:30] Introduction :: The speaker introduces themselves, quickly mentions their background and what prompted them to give this talk. Goes over the agenda.
  - [02:30--05:00] The problem we're solving :: Explaining what problems the topics explored within this talk can help us solve. In this particular case, it's inserting data into a database.
  - [05:00--12:00] Exploring the meat of the problem :: Discussions on how this might be solved in Java or C#(including exceptions, inheritance, sealed classes), maybe JavaScript (strings. Strings everywhere!) . Introduces the concept of Algebraic Data Types and how they can be used. Uses Rust to show implementations, including the basic Result<T, E> type and more advanced custom types. This introduces the concept of Result types (secretly monads) being like a virus in that it 'infects' your code base and you can never really leave the context (similar to asynchronous functions).
- - [12:00--12:20] Mandatory 'monads are burritos' joke. No-one laughs :(
+ - [12:00--12:20] Mandatory 'monads are burritos' joke :: No-one laughs :(
  - [12:20--17:00] Working with the data :: Wherein the speaker tries to answer the question 'but how do I get the value?'. Short answer: you don't. Demonstrates why you want to operate within the context of the data rather than taking the data out. Mentions railway-style programming and how that can vastly improve error handling in your applications.
  - [17:00--20:00] Wrap-up: summary and hopes for the future :: The speaker hopes to see some of these concepts adopted into the mainstream
 
